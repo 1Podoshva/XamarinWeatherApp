@@ -15,8 +15,9 @@ namespace WeatherLibrary
 			//Mvx.RegisterType<WeatherMainModel>(() => new WeatherMainModel(city));
 			//Mvx.RegisterType<WeatherForecastModel>(() => new WeatherForecastModel(city));
 
-			////Mvx.RegisterSingleton<IMvxAppStart>(new MvxAppStart<WeatherForecastViewModel>());
+			//Mvx.RegisterSingleton<IMvxAppStart>(new MvxAppStart<WeatherForecastViewModel>());
 
+			Mvx.RegisterType<IDataService, DataService>();
 			Mvx.RegisterType<WeatherPageModel>(() => new WeatherPageModel());
 			Mvx.RegisterSingleton<IMvxAppStart>(new MvxAppStart<WeatherPagedViewModel>());
 

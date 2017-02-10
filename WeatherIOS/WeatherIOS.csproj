@@ -122,6 +122,7 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AddIcon.imageset\Contents.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -132,6 +133,8 @@
     <Folder Include="ViewControllers\ForecastTableProtocols\" />
     <Folder Include="ViewControllers\PageViewController\" />
     <Folder Include="ViewControllers\Location\" />
+    <Folder Include="Assets.xcassets\AddIcon.imageset\" />
+    <Folder Include="ViewControllers\CityDataSeviceView\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -140,6 +143,7 @@
     <InterfaceDefinition Include="ViewControllers\ForecastTableViewCell\ForecastTableViewCell.xib" />
     <InterfaceDefinition Include="ViewControllers\PageViewController\StartPageViewController.xib" />
     <InterfaceDefinition Include="ViewControllers\Location\LocationViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\CityDataSeviceView\CityDataServiceViewController.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -174,6 +178,10 @@
     <Compile Include="ViewControllers\Location\LocationViewController.designer.cs">
       <DependentUpon>LocationViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\CityDataSeviceView\CityDataServiceViewController.cs" />
+    <Compile Include="ViewControllers\CityDataSeviceView\CityDataServiceViewController.designer.cs">
+      <DependentUpon>CityDataServiceViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WeatherLibrary\WeatherLibrary.csproj">
@@ -183,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\MainWeather_bgImage.png" />
+    <BundleResource Include="Resources\Plus-100.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

@@ -11,11 +11,19 @@ using UIKit;
 
 namespace WeatherIOS
 {
-    [Register ("LocationViewController")]
-    partial class LocationViewController
+    [Register ("CityDataServiceViewController")]
+    partial class CityDataServiceViewController
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITableView TableView { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (TableView != null) {
+                TableView.Dispose ();
+                TableView = null;
+            }
         }
     }
 }

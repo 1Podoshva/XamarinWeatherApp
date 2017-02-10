@@ -30,8 +30,17 @@ namespace WeatherIOS
 			this.View.Frame = UIScreen.MainScreen.Bounds;
 			this.View.InsertSubview(imageView, 0);
 
+			UIButton toCityButton = new UIButton(UIButtonType.Custom);
+
+			float size = 30;
+			toCityButton.Frame = new CoreGraphics.CGRect(View.Frame.Size.Width - size * 1.3, size, size, size);
+			toCityButton.SetImage(new UIImage("Plus-100.png"), UIControlState.Normal);
+			View.Add(toCityButton);
+
 			this.NavigationController.NavigationBarHidden = true;
+
 			var set = this.CreateBindingSet<WeatherPageViewController, WeatherPagedViewModel>();
+			set.Bind(toCityButton).To(vm => vm.ShowCityDataServiceCommand);
 			set.Apply();
 
 		}

@@ -35,12 +35,9 @@
     <Compile Include="BusinessLayer\Model\Objects\CityObject.cs" />
     <Compile Include="BusinessLayer\Model\Objects\WeatherObject.cs" />
     <Compile Include="BusinessLayer\ViewModel\BaseWeatherViewModel.cs" />
-    <Compile Include="BusinessLayer\Interfaces\IWeatherControl.cs" />
-    <Compile Include="BusinessLayer\Interfaces\IOpenWeatherAPI.cs" />
     <Compile Include="BusinessLayer\ViewModel\WeatherMainViewModel.cs" />
     <Compile Include="BusinessLayer\ViewModelValueConventers\MainViewModelValueConverter.cs" />
     <Compile Include="BusinessLayer\ViewModelValueConventers\ConverterValueContext.cs" />
-    <Compile Include="BusinessLayer\Interfaces\IOpenWeatherHttpRequest.cs" />
     <Compile Include="ServiceLayer\WeatherManager.cs" />
     <Compile Include="ServiceLayer\OpenWeatherHttpRequest.cs" />
     <Compile Include="BusinessLayer\Model\BaseWeatherModel.cs" />
@@ -55,6 +52,12 @@
     <Compile Include="BusinessLayer\ViewModel\PageViewModel\StartPageViewModel.cs" />
     <Compile Include="ServiceLayer\LocationManager.cs" />
     <Compile Include="BusinessLayer\ViewModel\LocationViewModel.cs" />
+    <Compile Include="ServiceLayer\DataService.cs" />
+    <Compile Include="BusinessLayer\ViewModel\CityDataServiceViewModel.cs" />
+    <Compile Include="Interfaces\IDataService.cs" />
+    <Compile Include="Interfaces\IOpenWeatherAPI.cs" />
+    <Compile Include="Interfaces\IOpenWeatherHttpRequest.cs" />
+    <Compile Include="Interfaces\IWeatherControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ServiceLayer\" />
@@ -62,9 +65,9 @@
     <Folder Include="BusinessLayer\Model\" />
     <Folder Include="BusinessLayer\Model\Objects\" />
     <Folder Include="BusinessLayer\ViewModel\" />
-    <Folder Include="BusinessLayer\Interfaces\" />
     <Folder Include="BusinessLayer\ViewModelValueConventers\" />
     <Folder Include="BusinessLayer\ViewModel\PageViewModel\" />
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

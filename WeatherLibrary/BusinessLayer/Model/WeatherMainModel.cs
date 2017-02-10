@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Collections.Generic;
+using MvvmCross.Plugins.Location;
 
 namespace WeatherLibrary
 {

@@ -23,7 +23,6 @@ namespace WeatherLibrary
 		private void InitViewModels() {
 
 			ViewModels = new List<WeatherMainPageViewModel>();
-			//var foo = Mvx.Resolve<StartPageViewModel>();
 			foreach (WeatherMainModel mainModel in _model.MainModels) {
 				ViewModels.Add(new WeatherMainPageViewModel(mainModel));
 			}
@@ -55,6 +54,7 @@ namespace WeatherLibrary
 			return null;
 
 		}
+
 
 	}
 }

@@ -204,14 +204,14 @@ namespace WeatherLibrary
 
 		private string getUrlWeatherString(CityObject city, string urlRequestString) {
 
-			if (city.Id != null)
+			if ((city.Coordinates.Latitude != null) && (city.Coordinates.Longitude != null))
+				return string.Format(urlRequestString + "?lat={0}&lon={1}&APPID={2}", city.Coordinates.Latitude, city.Coordinates.Longitude, APIIDKey);
+
+			else if (city.Id != null)
 				return string.Format(urlRequestString + "?id={0}&APPID={1}", city.Id, APIIDKey);
 
 			else if (city.Name != null)
 				return string.Format(urlRequestString + "?q={0}&APPID={1}", city.Name, APIIDKey);
-
-			else if ((city.Coordinates.Latitude != null) && (city.Coordinates.Longitude != null))
-				return string.Format(urlRequestString + "?lat={0}&lon={1}&APPID={2}", city.Coordinates.Latitude, city.Coordinates.Longitude, APIIDKey);
 
 			return null;
 

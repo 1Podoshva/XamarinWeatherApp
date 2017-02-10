@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Net;
+using MvvmCross.Platform.Core;
+using MvvmCross.Plugins.Location;
 
 namespace WeatherLibrary
 {
 	public class WatherCurrentModel : BaseWeatherModel
 	{
-		//Private event
+		//Private 
 		//
 
 		private event Action<WeatherObject> _didUpdateWeaherEventHandler;
 
-		//Private event
+		//Public event
 		//
 
 		public Action<WeatherObject> DidUpdateWeaherEventHandler
@@ -30,6 +32,7 @@ namespace WeatherLibrary
 			CurrentWeather = new WeatherObject(city);
 		}
 
+
 		#endregion
 
 		#region PublicMethods
@@ -45,7 +48,7 @@ namespace WeatherLibrary
 
 		#endregion
 
-		#region PrivateMethods
+		#region ProtectedMethods
 
 		protected void weatherEventHandler(WeatherObject weatherObject, WebException webExeptin) {
 

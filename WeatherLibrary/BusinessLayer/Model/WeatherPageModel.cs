@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using MvvmCross.Plugins.Location;
 using System.ComponentModel;
+using MvvmCross.Platform;
+
 namespace WeatherLibrary
 {
 	public class WeatherPageModel

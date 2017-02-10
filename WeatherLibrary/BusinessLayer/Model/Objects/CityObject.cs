@@ -1,4 +1,6 @@
 ﻿using System;
+using MvvmCross.Platform.Core;
+using MvvmCross.Plugins.Location;
 
 namespace WeatherLibrary
 {
@@ -25,6 +27,10 @@ namespace WeatherLibrary
 		public string Name { get; private set; }
 		public CityCoordinate Coordinates { get; private set; }
 
+
+		public CityObject() : base() {
+
+		}
 		public CityObject(string id, string name, CityCoordinate coordinates) : base() {
 
 			this.Id = id;
@@ -33,13 +39,6 @@ namespace WeatherLibrary
 
 		}
 
-		public CityObject() : base() {
-
-		}
-
-		public void UpdateCoordinates(CityCoordinate coordinates) {
-			this.Coordinates = coordinates;
-		}
 	}
 
 

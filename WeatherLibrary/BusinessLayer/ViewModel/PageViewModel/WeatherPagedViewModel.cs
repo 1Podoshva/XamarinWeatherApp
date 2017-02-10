@@ -10,8 +10,8 @@ namespace WeatherLibrary
 	{
 
 		private WeatherPageModel _model;
-		private WeatherMainPageViewModel _defaultViewModel
-;
+		private WeatherMainPageViewModel _defaultViewModel;
+
 		public List<WeatherMainPageViewModel> ViewModels { get; private set; }
 
 		public WeatherPagedViewModel(WeatherPageModel model) {
@@ -21,8 +21,9 @@ namespace WeatherLibrary
 		}
 
 		private void InitViewModels() {
+
 			ViewModels = new List<WeatherMainPageViewModel>();
-			var foo = Mvx.Resolve<StartPageViewModel>();
+			//var foo = Mvx.Resolve<StartPageViewModel>();
 			foreach (WeatherMainModel mainModel in _model.MainModels) {
 				ViewModels.Add(new WeatherMainPageViewModel(mainModel));
 			}
@@ -34,6 +35,7 @@ namespace WeatherLibrary
 		}
 
 		public IMvxPagedViewModel GetNextViewModel(IMvxPagedViewModel currentViewModel) {
+
 			int index = ViewModels.FindIndex((WeatherMainPageViewModel obj) => { return obj.Equals(currentViewModel); });
 
 			if (index < ViewModels.Count - 1)
@@ -44,6 +46,7 @@ namespace WeatherLibrary
 		}
 
 		public IMvxPagedViewModel GetPreviousViewModel(IMvxPagedViewModel currentViewModel) {
+
 			int index = ViewModels.FindIndex((WeatherMainPageViewModel obj) => { return obj.Equals(currentViewModel); });
 
 			if (index > 0)

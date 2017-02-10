@@ -211,7 +211,7 @@ namespace WeatherLibrary
 				return string.Format(urlRequestString + "?q={0}&APPID={1}", city.Name, APIIDKey);
 
 			else if ((city.Coordinates.Latitude != null) && (city.Coordinates.Longitude != null))
-				return string.Format(urlRequestString + "?lat={0}&lot={1}&APPID={2}", city.Coordinates.Latitude, city.Coordinates.Longitude, APIIDKey);
+				return string.Format(urlRequestString + "?lat={0}&lon={1}&APPID={2}", city.Coordinates.Latitude, city.Coordinates.Longitude, APIIDKey);
 
 			return null;
 

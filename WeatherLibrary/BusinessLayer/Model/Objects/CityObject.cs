@@ -36,6 +36,12 @@ namespace WeatherLibrary
 		public CityObject() : base() {
 
 		}
+
+		public void UpdateCoordinates(CityCoordinate coordinates) {
+			this.Coordinates = coordinates;
+		}
 	}
+
+
 
 }

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AFAA9361-1A0F-47A0-B2C0-DD09D482EFAE}</ProjectGuid>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <UseMSBuildEngine>true</UseMSBuildEngine>
+    <OutputType>Library</OutputType>
+    <RootNamespace>WeatherLibrary</RootNamespace>
+    <AssemblyName>WeatherLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BusinessLayer\Model\WeatherMainModel.cs" />
+    <Compile Include="BusinessLayer\Model\Objects\BaseObject.cs" />
+    <Compile Include="BusinessLayer\Model\Objects\CityObject.cs" />
+    <Compile Include="BusinessLayer\Model\Objects\WeatherObject.cs" />
+    <Compile Include="BusinessLayer\ViewModel\BaseWeatherViewModel.cs" />
+    <Compile Include="BusinessLayer\Interfaces\IWeatherControl.cs" />
+    <Compile Include="BusinessLayer\Interfaces\IOpenWeatherAPI.cs" />
+    <Compile Include="BusinessLayer\ViewModel\WeatherMainViewModel.cs" />
+    <Compile Include="BusinessLayer\ViewModelValueConventers\MainViewModelValueConverter.cs" />
+    <Compile Include="BusinessLayer\ViewModelValueConventers\ConverterValueContext.cs" />
+    <Compile Include="BusinessLayer\Interfaces\IOpenWeatherHttpRequest.cs" />
+    <Compile Include="ServiceLayer\WeatherManager.cs" />
+    <Compile Include="ServiceLayer\OpenWeatherHttpRequest.cs" />
+    <Compile Include="BusinessLayer\Model\BaseWeatherModel.cs" />
+    <Compile Include="BusinessLayer\Model\WeatherForecastModel.cs" />
+    <Compile Include="BusinessLayer\ViewModel\WeatherForecastViewModel.cs" />
+    <Compile Include="BusinessLayer\ViewModelValueConventers\ConventerEnums.cs" />
+    <Compile Include="BusinessLayer\ViewModelValueConventers\ForecastTableViewCellValueConverter.cs" />
+    <Compile Include="BusinessLayer\Model\WatherCurrentModel.cs" />
+    <Compile Include="BusinessLayer\ViewModel\PageViewModel\WeatherPagedViewModel.cs" />
+    <Compile Include="BusinessLayer\Model\WeatherPageModel.cs" />
+    <Compile Include="BusinessLayer\ViewModel\PageViewModel\WeatherMainPageViewModel.cs" />
+    <Compile Include="BusinessLayer\ViewModel\PageViewModel\StartPageViewModel.cs" />
+    <Compile Include="ServiceLayer\LocationManager.cs" />
+    <Compile Include="BusinessLayer\ViewModel\LocationViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ServiceLayer\" />
+    <Folder Include="BusinessLayer\" />
+    <Folder Include="BusinessLayer\Model\" />
+    <Folder Include="BusinessLayer\Model\Objects\" />
+    <Folder Include="BusinessLayer\ViewModel\" />
+    <Folder Include="BusinessLayer\Interfaces\" />
+    <Folder Include="BusinessLayer\ViewModelValueConventers\" />
+    <Folder Include="BusinessLayer\ViewModel\PageViewModel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Platform">
+      <HintPath>..\packages\MvvmCross.Platform.4.4.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Core">
+      <HintPath>..\packages\MvvmCross.Core.4.4.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Binding">
+      <HintPath>..\packages\MvvmCross.Binding.4.4.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Binding.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Localization">
+      <HintPath>..\packages\MvvmCross.Binding.4.4.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.Location">
+      <HintPath>..\packages\MvvmCross.Plugin.Location.4.4.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Plugins.Location.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+</Project>

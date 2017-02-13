@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using MvvmCross.Platform;
 using MvvmCross.Plugins.Location;
 using System.Windows.Input;
+using MvvmCross.Plugins.Messenger;
 
 namespace WeatherLibrary
 {
@@ -16,6 +17,10 @@ namespace WeatherLibrary
 		private WeatherPageModel _model;
 		private WeatherMainPageViewModel _defaultViewModel;
 		private MvxCommand _showCityDataServiceView;
+		private IMvxLocationWatcher _watcher;
+		private WeatherMainPageViewModel _currentLocationPageView;
+		private IMvxMessenger _massager;
+		private MvxSubscriptionToken _token;
 
 		//Public property
 		//
@@ -32,10 +37,15 @@ namespace WeatherLibrary
 		//Init
 		//
 
-		public WeatherPagedViewModel(WeatherPageModel model) {
+		public WeatherPagedViewModel(WeatherPageModel model, IMvxLocationWatcher watcher, IMvxMessenger massager) {
+
+			_massager = massager;
+			_token = _massager.Subscribe<CitiesMassage>(OnUpdateCities);
+			_watcher = watcher;
+			_watcher.Start(new MvxLocationOptions(), locationEventHandleAction, errorEventHandleAction);
 			_model = model;
 			this.InitViewModels();
-			_defaultViewModel = ViewModels[0];
+
 		}
 
 		//Private methods
@@ -48,6 +58,14 @@ namespace WeatherLibrary
 				ViewModels.Add(new WeatherMainPageViewModel(mainModel));
 			}
 
+			if (ViewModels.Count > 0)
+				_defaultViewModel = ViewModels[0];
+			else if (_currentLocationPageView != null)
+				_defaultViewModel = _currentLocationPageView;
+			else {
+				_defaultViewModel = new WeatherMainPageViewModel(new WeatherMainModel(new CityObject(null, null, new CityCoordinate(null, null))));
+			}
+
 		}
 
 		void showCityDataServiceCommand() {
@@ -57,26 +75,28 @@ namespace WeatherLibrary
 		#region IMvxPageViewModel
 
 		public IMvxPagedViewModel GetDefaultViewModel() {
-			return _defaultViewModel;
+			return _currentLocationPageView ?? _defaultViewModel;
 		}
 
 		public IMvxPagedViewModel GetNextViewModel(IMvxPagedViewModel currentViewModel) {
 
-			int index = ViewModels.FindIndex((WeatherMainPageViewModel obj) => { return obj.Equals(currentViewModel); });
+			int index = ViewModels.FindIndex((WeatherMainPageViewModel obj) => { return obj.PagedViewId.Equals(currentViewModel.PagedViewId); });
 
 			if (index < ViewModels.Count - 1)
 				return ViewModels[index + 1];
-
 
 			return null;
 		}
 
 		public IMvxPagedViewModel GetPreviousViewModel(IMvxPagedViewModel currentViewModel) {
 
-			int index = ViewModels.FindIndex((WeatherMainPageViewModel obj) => { return obj.Equals(currentViewModel); });
+			int index = ViewModels.FindIndex((WeatherMainPageViewModel obj) => { return obj.PagedViewId.Equals(currentViewModel.PagedViewId); });
 
 			if (index > 0)
 				return ViewModels[index - 1];
+
+			if (index == 0 && _currentLocationPageView != null)
+				return _currentLocationPageView;
 
 			return null;
 
@@ -85,5 +105,25 @@ namespace WeatherLibrary
 		#endregion
 
 
+		void locationEventHandleAction(MvxGeoLocation location) {
+
+			string lat = location.Coordinates.Latitude.ToString();
+			string lon = location.Coordinates.Longitude.ToString();
+
+			CityObject city = new CityObject(null, null, new CityCoordinate(lat, lon));
+			WeatherMainModel pageModel = new WeatherMainModel(city);
+			_currentLocationPageView = new WeatherMainPageViewModel(pageModel);
+
+		}
+
+		void errorEventHandleAction(MvxLocationError obj) {
+			System.Diagnostics.Debug.WriteLine("-- Error get location: {} --", obj.Code);
+			_currentLocationPageView = null;
+		}
+
+		void OnUpdateCities(CitiesMassage obj) {
+			_model.UpdateMianModels();
+			InitViewModels();
+		}
 	}
 }

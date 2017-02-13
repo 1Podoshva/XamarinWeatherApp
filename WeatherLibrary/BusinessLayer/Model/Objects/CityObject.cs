@@ -25,12 +25,13 @@ namespace WeatherLibrary
 
 		public string Id { get; private set; }
 		public string Name { get; private set; }
-		public CityCoordinate Coordinates { get; private set; }
+		public CityCoordinate Coordinates { get; set; }
 
 
 		public CityObject() : base() {
 
 		}
+
 		public CityObject(string id, string name, CityCoordinate coordinates) : base() {
 
 			this.Id = id;

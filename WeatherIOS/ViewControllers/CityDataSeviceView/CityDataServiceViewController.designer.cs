@@ -18,11 +18,20 @@ namespace WeatherIOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITableView TableView { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField TextField { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
             if (TableView != null) {
                 TableView.Dispose ();
                 TableView = null;
+            }
+
+            if (TextField != null) {
+                TextField.Dispose ();
+                TextField = null;
             }
         }
     }

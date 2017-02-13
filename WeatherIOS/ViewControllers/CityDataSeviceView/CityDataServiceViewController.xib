@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CityDataServiceViewController">
             <connections>
                 <outlet property="TableView" destination="bNz-Db-lDJ" id="name-outlet-bNz-Db-lDJ"/>
+                <outlet property="TextField" destination="wKb-mI-LAl" id="name-outlet-wKb-mI-LAl"/>
                 <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
             </connections>
         </placeholder>
@@ -19,18 +20,44 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bNz-Db-lDJ">
-                    <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bNz-Db-lDJ">
+                    <rect key="frame" x="0.0" y="45" width="320" height="523"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MES-Rh-1Ih">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wKb-mI-LAl">
+                            <rect key="frame" x="8" y="8" width="304" height="30"/>
+                            <color key="backgroundColor" red="0.81176470590000005" green="0.81176470590000005" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="wKb-mI-LAl" firstAttribute="centerY" secondItem="MES-Rh-1Ih" secondAttribute="centerY" id="8Z8-mX-pmj"/>
+                        <constraint firstItem="wKb-mI-LAl" firstAttribute="centerX" secondItem="MES-Rh-1Ih" secondAttribute="centerX" id="JiC-od-YAE"/>
+                        <constraint firstItem="wKb-mI-LAl" firstAttribute="leading" secondItem="MES-Rh-1Ih" secondAttribute="leading" constant="8" id="KbB-wy-M5B"/>
+                        <constraint firstAttribute="height" constant="45" id="TA6-vU-wX8"/>
+                        <constraint firstAttribute="trailing" secondItem="wKb-mI-LAl" secondAttribute="trailing" constant="8" id="zkH-1X-ewg"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="bNz-Db-lDJ" secondAttribute="bottom" id="2Ss-Ot-FZr"/>
                 <constraint firstItem="bNz-Db-lDJ" firstAttribute="leading" secondItem="2" secondAttribute="leading" id="41d-Tl-9Q7"/>
-                <constraint firstItem="bNz-Db-lDJ" firstAttribute="top" secondItem="2" secondAttribute="top" constant="20" id="FAW-fw-SpK"/>
+                <constraint firstAttribute="trailing" secondItem="MES-Rh-1Ih" secondAttribute="trailing" id="4zD-mm-9Ev"/>
+                <constraint firstItem="MES-Rh-1Ih" firstAttribute="leading" secondItem="2" secondAttribute="leading" id="T4Z-wX-2Ru"/>
+                <constraint firstItem="bNz-Db-lDJ" firstAttribute="top" secondItem="MES-Rh-1Ih" secondAttribute="bottom" id="UT8-iJ-qPL"/>
+                <constraint firstItem="MES-Rh-1Ih" firstAttribute="top" secondItem="2" secondAttribute="top" id="sXL-aX-0we"/>
                 <constraint firstAttribute="trailing" secondItem="bNz-Db-lDJ" secondAttribute="trailing" id="vd6-rM-1NQ"/>
             </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <point key="canvasLocation" x="658" y="75"/>
         </view>
     </objects>
 </document>

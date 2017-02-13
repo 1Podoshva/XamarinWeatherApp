@@ -10,24 +10,12 @@ namespace WeatherLibrary
 
 		public App() : base() {
 
-			//CityObject city = new CityObject(null, "Minsk", new CityCoordinate(null, null));
-
-			//Mvx.RegisterType<WeatherMainModel>(() => new WeatherMainModel(city));
-			//Mvx.RegisterType<WeatherForecastModel>(() => new WeatherForecastModel(city));
-
-			//Mvx.RegisterSingleton<IMvxAppStart>(new MvxAppStart<WeatherForecastViewModel>());
-
 			Mvx.RegisterType<IDataService, DataService>();
-			Mvx.RegisterType<WeatherPageModel>(() => new WeatherPageModel());
+			Mvx.RegisterType<WeatherPageModel>(() => new WeatherPageModel(Mvx.Resolve<IDataService>()));
 			Mvx.RegisterSingleton<IMvxAppStart>(new MvxAppStart<WeatherPagedViewModel>());
 
 		}
 
-		//public override void Initialize() {
-		//	base.Initialize();
-		//	//Start
-		//	RegisterAppStart<LocationViewModel>();
-		//}
 	}
 
 }

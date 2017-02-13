@@ -9,30 +9,36 @@ namespace WeatherLibrary
 	public class WeatherPageModel
 	{
 		private List<WeatherMainModel> _mainModels;
+		private IDataService _dataService;
 
 		public List<WeatherMainModel> MainModels
 		{
-			get { return _mainModels; }
+			get {
+				return _mainModels;
+			}
 			private set { _mainModels = value; }
 		}
 
-		public WeatherPageModel() {
+		public WeatherPageModel(IDataService dataService) {
+			_dataService = dataService;
 
 			this.MainModels = new List<WeatherMainModel>();
+
 			InitWeatherMainModels();
 
 		}
 
 		private void InitWeatherMainModels() {
-
-			this.MainModels.Add(new WeatherMainModel(new CityObject(null, "Minsk", new CityCoordinate(null, null))));
-			this.MainModels.Add(new WeatherMainModel(new CityObject(null, "London", new CityCoordinate(null, null))));
-			this.MainModels.Add(new WeatherMainModel(new CityObject(null, "New York", new CityCoordinate(null, null))));
-			this.MainModels.Add(new WeatherMainModel(new CityObject(null, "Kiev", new CityCoordinate(null, null))));
-			this.MainModels.Add(new WeatherMainModel(new CityObject(null, "Shklow", new CityCoordinate(null, null))));
-
-
+			foreach (CityEntity city in _dataService.Cities()) {
+				this.MainModels.Add(new WeatherMainModel(new CityObject(null, city.Name, new CityCoordinate(null, null))));
+			}
 		}
+
+		public void UpdateMianModels() {
+			this.MainModels = new List<WeatherMainModel>();
+			InitWeatherMainModels();
+		}
+
 
 	}
 
